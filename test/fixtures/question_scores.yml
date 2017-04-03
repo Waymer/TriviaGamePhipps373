@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score: 1
+  time: 1
+  landmark_id: 1
+  question_id: 1
+
+two:
+  score: 1
+  time: 1
+  landmark_id: 1
+  question_id: 1

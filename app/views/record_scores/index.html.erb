@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Record Scores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gr</th>
+      <th>Qs</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @record_scores.each do |record_score| %>
+      <tr>
+        <td><%= record_score.gr_id %></td>
+        <td><%= record_score.qs_id %></td>
+        <td><%= link_to 'Show', record_score %></td>
+        <td><%= link_to 'Edit', edit_record_score_path(record_score) %></td>
+        <td><%= link_to 'Destroy', record_score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Record score', new_record_score_path %>

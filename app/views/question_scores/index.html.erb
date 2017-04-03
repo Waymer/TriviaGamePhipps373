@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Question Scores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Score</th>
+      <th>Time</th>
+      <th>Landmark</th>
+      <th>Question</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @question_scores.each do |question_score| %>
+      <tr>
+        <td><%= question_score.score %></td>
+        <td><%= question_score.time %></td>
+        <td><%= question_score.landmark_id %></td>
+        <td><%= question_score.question_id %></td>
+        <td><%= link_to 'Show', question_score %></td>
+        <td><%= link_to 'Edit', edit_question_score_path(question_score) %></td>
+        <td><%= link_to 'Destroy', question_score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Question score', new_question_score_path %>

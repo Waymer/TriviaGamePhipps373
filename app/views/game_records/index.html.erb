@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Game Records</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Timestamp</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @game_records.each do |game_record| %>
+      <tr>
+        <td><%= game_record.name %></td>
+        <td><%= game_record.timestamp %></td>
+        <td><%= link_to 'Show', game_record %></td>
+        <td><%= link_to 'Edit', edit_game_record_path(game_record) %></td>
+        <td><%= link_to 'Destroy', game_record, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Game record', new_game_record_path %>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gr_id: 1
+  qs_id: 1
+
+two:
+  gr_id: 1
+  qs_id: 1

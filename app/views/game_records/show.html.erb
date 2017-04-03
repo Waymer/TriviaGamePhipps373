@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @game_record.name %>
+</p>
+
+<p>
+  <strong>Timestamp:</strong>
+  <%= @game_record.timestamp %>
+</p>
+
+<%= link_to 'Edit', edit_game_record_path(@game_record) %> |
+<%= link_to 'Back', game_records_path %>

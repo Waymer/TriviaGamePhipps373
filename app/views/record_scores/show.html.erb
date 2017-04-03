@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Gr:</strong>
+  <%= @record_score.gr_id %>
+</p>
+
+<p>
+  <strong>Qs:</strong>
+  <%= @record_score.qs_id %>
+</p>
+
+<%= link_to 'Edit', edit_record_score_path(@record_score) %> |
+<%= link_to 'Back', record_scores_path %>
