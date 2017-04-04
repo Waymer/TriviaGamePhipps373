@@ -1,0 +1,49 @@
+body {
+  text-align: center;
+  margin: 0 auto;
+}
+
+main {
+  margin: 1em auto;
+  width: 900px;
+  height: 600px;
+  background-color: #e6f7ec;
+  position: relative;
+}
+
+.score-area {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.score-area p {
+  font-size: 1.5em;
+}
+
+.landmark {
+  position: absolute;
+  z-index: 10;
+}
+
+.duq {
+  top: 50px;
+  left: 50px;
+  width: 100px;
+}
+
+.blurb-photo {
+  width: 80%;
+}
+
+.bridge {
+  bottom: 100px;
+  left: 200px;
+  width: 150px;
+}
+
+.quiz-area, .blurb-area {
+  display: none;
+  padding: 1em;
+}
