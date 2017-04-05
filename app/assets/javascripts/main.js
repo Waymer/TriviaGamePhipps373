@@ -11,7 +11,7 @@ $(function() {
   $('.start-button').hide();
 
   // Load CSV of landmarks and questions
-  $.when( $.ajax('assets/landmarks.csv') , $.ajax('assets/questions.csv') )
+  $.when( $.ajax('landmarks.csv') , $.ajax('questions.csv') )
     .done( csvLoaded )
     .fail( function() { $('body').html('<h1>Something went wrong</h1>'); } );
 

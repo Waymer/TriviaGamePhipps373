@@ -12,7 +12,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   <!-- <link rel="stylesheet" href="stylesheets/style.css"> -->
-  <%= stylesheet_link_tag    "app/asset/stylesheets/style" %>
+  <%= stylesheet_link_tag    "style" %>
 </head>
 <body>
 
@@ -32,8 +32,10 @@
         <button class="start-button btn btn-default btn-lg">Begin</button>
       </div>
 
-      <div class="map-area">
-        <img class="map" src="assets/images/Rivers.png" width="900" height="600">
+      <div class="map-area" width="900" height="600">
+      <!-- <div class="map-area"> -->
+        <!-- <img class="map" src="Rivers.png" width="900" height="600"> -->
+        <%= image_tag 'Rivers.png' %>
       </div>
 
       <div class="score-area">
@@ -57,7 +59,11 @@
           <h4>Lorem</h4>
         </span>
         <span class="info-pic">
-          <p><img class="blurb-photo" src="assets/images/duq-blurb.jpg"></p>
+          <p>
+
+            <!-- <img class="blurb-photo" src="duq-blurb.jpg"> -->
+            <%= image_tag 'duq-blurb.jpg' %>
+          </p>
         </span>
         <button class="to-map btn btn-default btn-lg btn-block">Next</button>
       </div>
@@ -68,9 +74,9 @@
 
   <script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script src="javascripts/js/jquery.csv.min.js"></script>
+  <!-- <script src="javascripts/js/jquery.csv.min.js"></script> -->
   <!-- <script src="javascripts/main.js"></script> -->
-  <%= javascript_include_tag "app/assets/javascripts/main.js" %>
+  <%= javascript_include_tag "main.js" %>
 
 </body>
 </html>
