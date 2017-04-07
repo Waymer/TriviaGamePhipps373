@@ -1,13 +1,21 @@
+@import "application.css.sass";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   text-align: center;
   margin: 0 auto;
+  background-color: rgb(241,227,197);
 }
 
 main {
   margin: 1em auto;
   width: 900px;
   height: 600px;
-  background-color: #e6f7ec;
+  background-color: white;
   position: relative;
 }
 
@@ -46,4 +54,10 @@ main {
 .quiz-area, .blurb-area {
   display: none;
   padding: 1em;
+  width: 80%;
+  margin: 0 auto;
+}
+
+big-checkmark {
+  color: rgb(120,162,47);
 }

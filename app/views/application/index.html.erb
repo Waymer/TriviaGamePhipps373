@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
-  <title>Trivia</title>
+  <title>Phipps Conservatory Trivia</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -18,18 +18,19 @@
 
 
   <div class="container">
-    <header>
-      <h1>Phipps Climate Change Trivia</h1>
-      <!-- <h2>Select A Pittsburgh Landmark To Begin...</h2> -->
-    </header>
 
     <main>
       <div class="welcome-area">
-        <br><br>
-        <h2>Welcome to our trivia game!</h2>
+      <br><br><br><br>
+        <%= image_tag 'phipps-logo.png' %>
+        <h2>Environment Trivia Game</h2>
+        <br>
+        <h4><strong>Instructions:</strong><br>
+          Select your favorite Pittsburgh landmarks and answer questions.<br>
+          Learn interesting facts about the environment and try to score the most points!</h4>
         <br><br>
         <button disabled class="loading-button btn btn-default btn-lg">Loading...</button>
-        <button class="start-button btn btn-default btn-lg">Begin</button>
+        <button class="start-button btn btn-success btn-lg">START</button>
       </div>
 
       <div class="map-area" width="900" height="600">
@@ -43,6 +44,7 @@
       </div>
 
       <div class="quiz-area">
+        <br><br>
         <h3 class="question">Is climate change real?</h3>
         <span class="answers">
         </span>
@@ -53,7 +55,8 @@
 
       <div class="blurb-area">
         <span class="result-text">
-          <h4>CORRECT! <span class="glyphicon glyphicon-ok"></span> <span class="time-took"></span></h4>
+          <h1><span class="glyphicon glyphicon-ok big-checkmark"></span></h1>
+          <h3>You are correct! </h3>
         </span>
         <span class="info-text">
           <h4>Lorem</h4>
@@ -65,7 +68,9 @@
             <%= image_tag 'duq-blurb.jpg' %>
           </p>
         </span>
-        <button class="to-map btn btn-default btn-lg btn-block">Next</button>
+        <button class="to-map btn btn-default btn-lg">Next question</button>
+        <br>
+        <p><span class="time-took"></span></p>
       </div>
     </main>
     

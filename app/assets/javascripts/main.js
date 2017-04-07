@@ -9,6 +9,7 @@ $(function() {
   // Show welcome area
   $('.map-area').hide();
   $('.start-button').hide();
+  $('.score-area').hide();
 
   // Load CSV of landmarks and questions
   $.when( $.ajax('landmarks.csv') , $.ajax('questions.csv') )
@@ -54,6 +55,7 @@ $(function() {
     e.preventDefault();
     $('.welcome-area').hide();
     $('.map-area').show();
+    $('.score-area').hide();
   }
 
   // When landmark clicked
