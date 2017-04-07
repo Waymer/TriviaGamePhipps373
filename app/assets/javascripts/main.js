@@ -5,6 +5,8 @@ $(function() {
   let landmarks;
   let questions;
   let score = 0;
+  let visited = [];
+  let currentLandmark;
 
   // Show welcome area
   $('.map-area').hide();
@@ -28,13 +30,23 @@ $(function() {
     // Place landmarks on map
     for (i = 0; i < landmarks.length; i++) {
       let landmark = landmarks[i];
-      let img = $('<img class="landmark">');
-      img.data('landmarkid', landmark.id);
-      img.attr('src', landmark.image);
-      let css = 'top:' + landmark.top + '; left:' + landmark.left + '; width:' + landmark.width + ';';
-      img.attr('style', css);
-      img.appendTo('.map-area');
-      img.wrap('<a href=""></a>');
+      if (landmark && landmark.top && landmark.left && landmark.width) {
+        let img = $('<img class="landmark">');
+        img.data('landmarkid', landmark.id);
+        img.attr('src', landmark.image);
+        let css = 'top:' + landmark.top + '; left:' + landmark.left + '; width:' + landmark.width + ';';
+        img.attr('style', css);
+        img.appendTo('.map-area');
+        img.wrap('<a href=""></a>');
+
+        let checkmark = $('<span class="glyphicon glyphicon-ok visited visited-' + landmark.id + '"></span>');
+        let bottomright = parseInt(landmark.left) + parseInt(landmark.width);
+        let checkmarkcss = 'top:' + landmark.top + '; left:' + bottomright + 'px;';
+        checkmark.attr('style', checkmarkcss);
+        checkmark.data('landmarkid', landmark.id);
+        checkmark.hide()
+        checkmark.appendTo('.map-area');
+      }
     }
     console.log("Landmarks placed on map");
 
@@ -62,6 +74,7 @@ $(function() {
   function landmarkClicked(e) {
     e.preventDefault();
     let id = $(this).data('landmarkid');
+    currentLandmark = id;
     console.log('Landmark ' + id + ' clicked');
     
     // Get question
@@ -114,16 +127,27 @@ $(function() {
   // When correct answer clicked
   function correctAnswerClicked() {
     let timetook = endTimer();
-    $(".time-took").text("(" + timetook + " seconds)");
+    $(".time-took").text(timetook + " seconds");
     score += 1;
     $(".score").text(score);
     $(".quiz-area").hide();
     $(".blurb-area").show();
 
     $(".to-map").click(function() {
+      console.log("Visited landmark #" + currentLandmark);
+      visited.push(currentLandmark);
       $(".map-area").show();
       $(".blurb-area").hide();
+      refreshVisited();
     });
+  }
+
+// Show visited landmarks
+  function refreshVisited() {
+    for(i = 0; i < visited.length; i++) {
+      $('.visited-' + visited[i]).show();
+      console.log('visited' + visited[i]);
+    }
   }
 
   // Timer

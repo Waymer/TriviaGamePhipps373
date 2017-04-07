@@ -58,6 +58,12 @@ main {
   margin: 0 auto;
 }
 
-big-checkmark {
+.big-checkmark {
   color: rgb(120,162,47);
+}
+
+.visited {
+  position: absolute;
+  color: rgb(120,162,47);
+  z-index: 100;
 }
