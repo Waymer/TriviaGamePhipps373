@@ -1,0 +1,15 @@
+id,image,width,top,left
+1,assets/Duquesne_Incline.png,100px,250px,190px
+14,assets/bridge.png,200px,140px,350px
+3,https://placeholdit.imgix.net/~text?txtsize=15&bg=ffc19e&txt=Monongahela+River&w=100&h=100&txttrack=0,100px,300px,450px
+4,https://placeholdit.imgix.net/~text?txtsize=15&bg=ffc19e&txt=Ohio+River&w=100&h=100&txttrack=0,100px,30px,20px
+5,https://placeholdit.imgix.net/~text?txtsize=15&bg=ffc19e&txt=Allegheny+River&w=100&h=100&txttrack=0,100px,30px,580px
+6,https://placeholdit.imgix.net/~text?txtsize=15&bg=ffc19e&txt=Energy+in+Pennsylvania&w=100&h=100&txttrack=0,100px,150px,750px
+,,,,
+9,https://placeholdit.imgix.net/~text?txtsize=15&bg=ffc19e&txt=Waterways&w=100&h=100&txttrack=0,100px,350px,220px
+16,https://placeholdit.imgix.net/~text?txtsize=15&bg=ffc19e&txt=Stormwater&w=100&h=100&txttrack=0,100px,200px,30px
+10,assets/Trees.png,125px,470px,100px
+11,https://placeholdit.imgix.net/~text?txtsize=15&bg=ffc19e&txt=Waste&w=100&h=100&txttrack=0,100px,30px,300px
+8,https://placeholdit.imgix.net/~text?txtsize=15&bg=ffc19e&txt=LEED&w=100&h=100&txttrack=0,100px,200px,600px
+13,assets/Smoke_Stack.png,150px,450px,550px
+15,assets/Phipps.png,150px,300px,700px

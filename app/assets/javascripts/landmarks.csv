@@ -6,7 +6,7 @@ id,image,width,top,left
 5,img/bridge.png,130px,20px,595px
 6,img/energy.png,100px,150px,750px
 9,img/ship.png,75px,325px,440px
-16,img/stormwater.png,130px,200px,30px
+16,app/assets/images/stormwater.png,130px,200px,30px
 10,img/trees.png,125px,470px,100px
 11,img/landfill.png,150px,30px,300px
 8,img/downtown2.png,200px,180px,380px
