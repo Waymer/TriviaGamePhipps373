@@ -67,7 +67,8 @@ main {
 
 .visited {
   position: absolute;
-  color: rgb(120,162,47);
+  /*color: rgb(120,162,47);*/
+  color: white;
   z-index: 100;
 }
 
