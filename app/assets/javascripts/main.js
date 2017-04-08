@@ -67,7 +67,7 @@ $(function() {
     e.preventDefault();
     $('.welcome-area').hide();
     $('.map-area').show();
-    $('.score-area').hide();
+    $('.score-area').show();
   }
 
   // When landmark clicked
