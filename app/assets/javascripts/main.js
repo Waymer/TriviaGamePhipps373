@@ -120,7 +120,9 @@ $(function() {
       $(this).addClass('btn-success');
       correctAnswerClicked();
     } else {
-      $(this).addClass('btn-danger');
+      // $(this).addClass('btn-danger');
+      $(this).addClass('active');
+      $(this).html($(this).text() + ' <span class="glyphicon glyphicon-remove text-danger"></span>');
     }
   }
 
@@ -142,11 +144,10 @@ $(function() {
     });
   }
 
-// Show visited landmarks
+  // Show visited landmarks
   function refreshVisited() {
     for(i = 0; i < visited.length; i++) {
       $('.visited-' + visited[i]).show();
-      console.log('visited' + visited[i]);
     }
   }
 
