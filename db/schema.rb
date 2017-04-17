@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170403232050) do
   enable_extension "plpgsql"
 
   create_table "game_records", force: :cascade do |t|
+    t.integer  "gr_id"
     t.string   "name"
     t.datetime "timestamp"
     t.datetime "created_at", null: false
@@ -24,15 +25,18 @@ ActiveRecord::Schema.define(version: 20170403232050) do
   end
 
   create_table "question_scores", force: :cascade do |t|
+    t.integer  "qs_id"
     t.integer  "score"
     t.integer  "time"
     t.integer  "landmark_id"
     t.integer  "question_id"
+    t.boolean  "visited"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
   create_table "record_scores", force: :cascade do |t|
+    t.integer  "rs_id"
     t.integer  "gr_id"
     t.integer  "qs_id"
     t.datetime "created_at", null: false
