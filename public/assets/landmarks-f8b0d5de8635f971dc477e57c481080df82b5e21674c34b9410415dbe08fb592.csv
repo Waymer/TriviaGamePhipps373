@@ -1,0 +1,14 @@
+id,image,width,top,left
+1,img/duquesne_incline.png,120px,250px,190px
+14,img/bridge.png,200px,110px,400px
+3,img/bridge.png,170px,380px,740px
+4,img/bridge.png,200px,80px,25px
+5,img/bridge.png,130px,20px,595px
+6,img/energy.png,100px,150px,750px
+9,img/ship.png,75px,325px,440px
+16,app/assets/images/stormwater.png,130px,200px,30px
+10,img/trees.png,125px,470px,100px
+11,img/landfill.png,150px,30px,300px
+8,img/downtown2.png,200px,180px,380px
+13,img/smoke_stack.png,200px,450px,550px
+15,img/phipps.png,180px,300px,700px
