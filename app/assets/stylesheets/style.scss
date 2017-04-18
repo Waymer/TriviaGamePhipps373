@@ -20,6 +20,28 @@ main {
   background-color: white;
 }
 
+.tutorial {
+  display: none;
+}
+
+.help-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+.end-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1;
+}
+
+.gameover-area {
+  display: none;
+}
+
 .score-area {
   position: absolute;
   top: 10px;
@@ -35,6 +57,7 @@ main {
   position: absolute;
   z-index: 10;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-filter: drop-shadow(24px 24px 14px rgba(0,255,255,1.5));
 }
 
 .duq {
@@ -69,6 +92,7 @@ main {
   /*color: rgb(120,162,47);*/
   color: white;
   z-index: 100;
+  font-size: 50px;
 }
 
 .timer {

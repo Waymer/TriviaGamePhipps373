@@ -33,4 +33,11 @@ ActiveRecord::Schema.define(version: 20170403232050) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "record_scores", force: :cascade do |t|
+    t.integer  "gr_id"
+    t.integer  "qs_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end

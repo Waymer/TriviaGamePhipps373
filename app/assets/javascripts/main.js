@@ -5,8 +5,9 @@ $(function() {
   let landmarks;
   let questions;
   let score = 0;
-  let visited = [];
+  let visited = new Set();
   let currentLandmark;
+  let totalLandmarks;
 
   // Show welcome area
   $('.map-area').hide();
@@ -27,6 +28,9 @@ $(function() {
     questions = $.csv.toObjects(q[0]);
     console.log("CSV converted to JS objects");
 
+    // Total landmarks count
+    totalLandmarks = landmarks.length;
+
     // Place landmarks on map
     for (i = 0; i < landmarks.length; i++) {
       let landmark = landmarks[i];
@@ -40,7 +44,7 @@ $(function() {
         img.wrap('<a href=""></a>');
 
         let checkmark = $('<span class="glyphicon glyphicon-ok visited visited-' + landmark.id + '"></span>');
-        let bottomright = parseInt(landmark.left) + parseInt(landmark.width);
+        let bottomright = parseInt(landmark.left) + parseInt(landmark.width) * 0.5 - 25;
         let checkmarkcss = 'top:' + landmark.top + '; left:' + bottomright + 'px;';
         checkmark.attr('style', checkmarkcss);
         checkmark.data('landmarkid', landmark.id);
@@ -60,7 +64,31 @@ $(function() {
     // Start button
     $('.start-button').click(begin);
 
+    // End button
+    $('.end-button').click(endGameButton);
+
+    // Help button
+    $('.help-button').click(showTutorial);
+
   } // --end csvLoaded
+
+  // Show Tutorial
+  function showTutorial(e) {
+    e.preventDefault();
+    $('.tutorial').modal();
+  }
+
+  // When game over
+  function endGameButton(e) {
+    e.preventDefault();
+    endGame();
+  }
+
+  function endGame() {
+    $('.map-area').hide();
+    $('.score-area').hide();
+    $('.gameover-area').show();
+  }
 
   // When start game
   function begin(e) {
@@ -68,6 +96,7 @@ $(function() {
     $('.welcome-area').hide();
     $('.map-area').show();
     $('.score-area').show();
+    $('.tutorial').modal();
   }
 
   // When landmark clicked
@@ -78,13 +107,13 @@ $(function() {
     console.log('Landmark ' + id + ' clicked');
     
     // Get question
-    let question;
+    let availableQuestions = [];
     for (i = 0; i < questions.length; i++) {
       if (questions[i].landmark == id) {
-        question = questions[i];
-        // @TODO more than one question per landmark
+        availableQuestions.push(questions[i]);
       }
     }
+    let question = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
 
     // Make information screen
     $('.blurb-area .info-text').html('<h4>' + question.info + '</h4>');
@@ -137,7 +166,7 @@ $(function() {
 
     $(".to-map").click(function() {
       console.log("Visited landmark #" + currentLandmark);
-      visited.push(currentLandmark);
+      visited.add(currentLandmark);
       $(".map-area").show();
       $(".blurb-area").hide();
       refreshVisited();
@@ -146,8 +175,13 @@ $(function() {
 
   // Show visited landmarks
   function refreshVisited() {
-    for(i = 0; i < visited.length; i++) {
-      $('.visited-' + visited[i]).show();
+    visited.forEach(function(value) {
+      $('.visited-' + value).show();
+    });
+
+    // Game over
+    if (visited.size >= totalLandmarks) {
+      endGame();
     }
   }
 
