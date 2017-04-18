@@ -20,6 +20,17 @@ main {
   background-color: white;
 }
 
+.tutorial {
+  display: none;
+}
+
+.help-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
 .end-button {
   position: absolute;
   bottom: 10px;

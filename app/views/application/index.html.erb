@@ -19,8 +19,24 @@
       <!-- <div class="map-area"> -->
         <!-- <img class="map" src="Rivers.png" width="900" height="600"> -->
         <%= image_tag 'background3.png', width: '900', height: '600', class: 'map' %>
+        <button class="help-button btn btn-default btn-lg">Help</button>
         <button class="end-button btn btn-default btn-lg">End Game</button>
       </div>
+
+      <div class="modal fade tutorial" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Tutorial</h4>
+            </div>
+            <div class="modal-body">
+              <p><img src="https://placehold.it/600x400?text=Tutorial"></p>
+              <button class="btn btn-success btn-lg" data-dismiss="modal">Play!</button>
+            </div><!-- end .modal-body -->
+          </div><!-- end .modal-content -->
+        </div><!-- end .modal-dialog -->
+      </div><!-- end .modal -->
 
       <div class="score-area">
         <p><span class="score">0</span> points</p>

@@ -63,7 +63,16 @@ $(function() {
     // End button
     $('.end-button').click(endGame);
 
+    // Help button
+    $('.help-button').click(showTutorial);
+
   } // --end csvLoaded
+
+  // Show Tutorial
+  function showTutorial(e) {
+    e.preventDefault();
+    $('.tutorial').modal();
+  }
 
   // When game over
   function endGame(e) {
@@ -79,6 +88,7 @@ $(function() {
     $('.welcome-area').hide();
     $('.map-area').show();
     $('.score-area').show();
+    $('.tutorial').modal();
   }
 
   // When landmark clicked
