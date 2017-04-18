@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 20170403232050) do
     t.integer  "time"
     t.integer  "landmark_id"
     t.integer  "question_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "game_record_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end

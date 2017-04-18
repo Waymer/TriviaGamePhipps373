@@ -10,7 +10,7 @@ class GameRecordsController < ApplicationController
   # GET /game_records/1
   # GET /game_records/1.json
   def show
-    #@related_question_scores = @game_record.record_scores.
+    @related_question_scores = @game_record.question_scores.by_landmark_id
   end
 
   # GET /game_records/new
@@ -55,11 +55,11 @@ class GameRecordsController < ApplicationController
   # DELETE /game_records/1
   # DELETE /game_records/1.json
   def destroy
-    @game_record.destroy
-    respond_to do |format|
-      format.html { redirect_to game_records_url, notice: 'Game record was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # @game_record.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to game_records_url, notice: 'Game record was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private
