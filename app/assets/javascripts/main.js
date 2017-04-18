@@ -60,7 +60,18 @@ $(function() {
     // Start button
     $('.start-button').click(begin);
 
+    // End button
+    $('.end-button').click(endGame);
+
   } // --end csvLoaded
+
+  // When game over
+  function endGame(e) {
+    e.preventDefault();
+    $('.map-area').hide();
+    $('.score-area').hide();
+    $('.gameover-area').show();
+  }
 
   // When start game
   function begin(e) {
