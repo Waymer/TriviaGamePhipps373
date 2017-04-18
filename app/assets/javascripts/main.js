@@ -40,7 +40,7 @@ $(function() {
         img.wrap('<a href=""></a>');
 
         let checkmark = $('<span class="glyphicon glyphicon-ok visited visited-' + landmark.id + '"></span>');
-        let bottomright = parseInt(landmark.left) + parseInt(landmark.width);
+        let bottomright = parseInt(landmark.left) + parseInt(landmark.width) * 0.5 - 25;
         let checkmarkcss = 'top:' + landmark.top + '; left:' + bottomright + 'px;';
         checkmark.attr('style', checkmarkcss);
         checkmark.data('landmarkid', landmark.id);
