@@ -78,13 +78,13 @@ $(function() {
     console.log('Landmark ' + id + ' clicked');
     
     // Get question
-    let question;
+    let availableQuestions = [];
     for (i = 0; i < questions.length; i++) {
       if (questions[i].landmark == id) {
-        question = questions[i];
-        // @TODO more than one question per landmark
+        availableQuestions.push(questions[i]);
       }
     }
+    let question = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
 
     // Make information screen
     $('.blurb-area .info-text').html('<h4>' + question.info + '</h4>');
