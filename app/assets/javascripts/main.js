@@ -5,8 +5,9 @@ $(function() {
   let landmarks;
   let questions;
   let score = 0;
-  let visited = [];
+  let visited = new Set();
   let currentLandmark;
+  let totalLandmarks;
 
   // Show welcome area
   $('.map-area').hide();
@@ -26,6 +27,9 @@ $(function() {
     landmarks = $.csv.toObjects(l[0]);
     questions = $.csv.toObjects(q[0]);
     console.log("CSV converted to JS objects");
+
+    // Total landmarks count
+    totalLandmarks = landmarks.length;
 
     // Place landmarks on map
     for (i = 0; i < landmarks.length; i++) {
@@ -61,7 +65,7 @@ $(function() {
     $('.start-button').click(begin);
 
     // End button
-    $('.end-button').click(endGame);
+    $('.end-button').click(endGameButton);
 
     // Help button
     $('.help-button').click(showTutorial);
@@ -75,8 +79,12 @@ $(function() {
   }
 
   // When game over
-  function endGame(e) {
+  function endGameButton(e) {
     e.preventDefault();
+    endGame();
+  }
+
+  function endGame() {
     $('.map-area').hide();
     $('.score-area').hide();
     $('.gameover-area').show();
@@ -158,7 +166,7 @@ $(function() {
 
     $(".to-map").click(function() {
       console.log("Visited landmark #" + currentLandmark);
-      visited.push(currentLandmark);
+      visited.add(currentLandmark);
       $(".map-area").show();
       $(".blurb-area").hide();
       refreshVisited();
@@ -167,8 +175,13 @@ $(function() {
 
   // Show visited landmarks
   function refreshVisited() {
-    for(i = 0; i < visited.length; i++) {
-      $('.visited-' + visited[i]).show();
+    visited.forEach(function(value) {
+      $('.visited-' + value).show();
+    });
+
+    // Game over
+    if (visited.size >= totalLandmarks) {
+      endGame();
     }
   }
 
