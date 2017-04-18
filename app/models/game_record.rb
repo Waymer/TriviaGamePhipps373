@@ -1,43 +1,36 @@
 class GameRecord < ActiveRecord::Base
 	#Relationships
-	has_many :record_scores
-
+	has_many :question_scores
 	#Scopes
 
 	#Validations
-	#should we include this, if name might not be entered until end??
-	validates_presence_of :name
-	#considered different from rails generated id??
-	validates_presence_of :gr_id
+	#validates_presence_of :name
 	#Methods
-	def get_record_score_ids
-		related_record_scores = Record_score.for_game_record(self.gr_id)
-		related_question_scores_id = related_record_scores.map{|n| n.qs_id}
-		related_question_scores_id
-	end
 	def get_total_score
-		related_question_scores_id = get_record_score_ids
+		question_scores = Question_score.for_game_record(self.id)
 		score = 0
-		related_question_scores_id.length.times do |j|
-			score += Question_score.for_specific(related_question_scores_id[j]).score
+		question_scores.length.times do |i|
+			score += question_scores[i].score
 		end
 		score
 	end
 	def get_total_time
-		related_question_scores_id = get_record_score_ids
+		question_scores = Question_score.for_game_record(self.id)
 		time = 0
-		related_question_scores_id.length.times do |j|
-			time += Question_score.for_specific(related_question_scores_id[j]).time
+		question_scores.length.times do |i|
+			time += question_scores[i].time
 		end
 		time
 	end
 	def is_complete?
-		 related_question_scores_id = get_record_score_ids
-		 related_question_scores_id.length.times do |j|
-		 	if (Question_score.for_specific(related_question_scores_id[j]).visited == false)
-		 		return false
-		 	end
-		 end
-		 return true
+		#now, should be done based on number of existing question_scores
+
+		 # related_question_scores_id = get_record_score_ids
+		 # related_question_scores_id.length.times do |j|
+		 # 	if (Question_score.for_specific(related_question_scores_id[j]).visited == false)
+		 # 		return false
+		 # 	end
+		 # end
+		 # return true
 	end
 end

@@ -10,6 +10,7 @@ class GameRecordsController < ApplicationController
   # GET /game_records/1
   # GET /game_records/1.json
   def show
+    #@related_question_scores = @game_record.record_scores.
   end
 
   # GET /game_records/new
