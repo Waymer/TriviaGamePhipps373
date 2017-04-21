@@ -21,6 +21,7 @@
         <%= image_tag 'background3.png', width: '900', height: '600', class: 'map' %>
         <button class="help-button btn btn-default btn-lg">Help</button>
         <button class="end-button btn btn-default btn-lg">End Game</button>
+        <button class="highscore-button btn btn-default btn-lg">High Score</button>
       </div>
 
       <div class="modal fade tutorial" tabindex="-1" role="dialog">
@@ -28,6 +29,22 @@
           <div class="modal-content tutorial-modal-content">
             <p><%= image_tag 'tutorial.png', class: 'tutorial-image' %></p>
             <button class="btn btn-success btn-lg" data-dismiss="modal">Play!</button>
+          </div><!-- end .modal-content -->
+        </div><!-- end .modal-dialog -->
+      </div><!-- end .modal -->
+
+      <div class="modal fade highscore" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content highscore-modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Highscore</h4>
+            </div>
+            <div class="modal-body highscore-modal-body">
+              ...
+            </div>
+
           </div><!-- end .modal-content -->
         </div><!-- end .modal-dialog -->
       </div><!-- end .modal -->

@@ -38,6 +38,13 @@ main {
   z-index: 1;
 }
 
+.highscore-button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
 .gameover-area {
   display: none;
 }

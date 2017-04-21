@@ -77,6 +77,11 @@ $(function() {
       $('.tutorial').modal('hide');
     });
 
+    $('.highscore-button').click(function(e) {
+      e.preventDefault();
+      $('.highscore').modal();
+    });
+
   } // --end csvLoaded
 
   // Show Tutorial
