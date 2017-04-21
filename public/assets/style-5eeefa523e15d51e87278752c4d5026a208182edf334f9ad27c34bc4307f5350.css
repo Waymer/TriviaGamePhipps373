@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  text-align: center;
+  margin: 0 auto;
+  background-color: #f1e3c5; }
+
+main {
+  margin: 1em auto;
+  width: 900px;
+  height: 600px;
+  position: relative;
+  /*background-color: rgb(241,227,197);*/
+  background-color: white; }
+
+.tutorial {
+  display: none; }
+
+.help-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1; }
+
+.end-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1; }
+
+.gameover-area {
+  display: none; }
+
+.score-area {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1; }
+
+.score-area p {
+  font-size: 1.5em; }
+
+.landmark {
+  position: absolute;
+  z-index: 10;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-filter: drop-shadow(24px 24px 14px cyan); }
+
+.duq {
+  top: 50px;
+  left: 50px;
+  width: 100px; }
+
+.blurb-photo {
+  width: 80%; }
+
+.bridge {
+  bottom: 100px;
+  left: 200px;
+  width: 150px; }
+
+.quiz-area, .blurb-area {
+  display: none;
+  padding: 1em;
+  width: 80%;
+  margin: 0 auto; }
+
+.big-checkmark {
+  color: #78a22f; }
+
+.visited {
+  position: absolute;
+  /*color: rgb(120,162,47);*/
+  color: white;
+  z-index: 100;
+  font-size: 50px; }
+
+.timer {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 1.5em; }
+
+.tutorial .modal-content {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.tutorial-image {
+  height: 500px; }
