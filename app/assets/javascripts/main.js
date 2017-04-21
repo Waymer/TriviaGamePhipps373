@@ -8,7 +8,7 @@ $(function() {
   let visited = new Set();
   let currentLandmark;
   let totalLandmarks;
-  let maxScorePerQuestion = 5;
+  let maxScorePerQuestion = 4;
   let currentQuestionScore = maxScorePerQuestion;
 
   // Show welcome area
