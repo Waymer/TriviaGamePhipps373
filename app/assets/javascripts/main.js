@@ -72,6 +72,11 @@ $(function() {
     // Help button
     $('.help-button').click(showTutorial);
 
+    // Make tutorial clickable
+    $('.tutorial-modal-content').click(function() {
+      $('.tutorial').modal('hide');
+    });
+
   } // --end csvLoaded
 
   // Show Tutorial
