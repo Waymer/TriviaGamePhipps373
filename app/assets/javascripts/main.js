@@ -8,6 +8,8 @@ $(function() {
   let visited = new Set();
   let currentLandmark;
   let totalLandmarks;
+  let maxScorePerQuestion = 5;
+  let currentQuestionScore = maxScorePerQuestion;
 
   // Show welcome area
   $('.map-area').hide();
@@ -152,6 +154,9 @@ $(function() {
       // $(this).addClass('btn-danger');
       $(this).addClass('active');
       $(this).html($(this).text() + ' <span class="glyphicon glyphicon-remove text-danger"></span>');
+      if (currentQuestionScore > 0) {
+        currentQuestionScore -= 1;
+      }
     }
   }
 
@@ -159,7 +164,8 @@ $(function() {
   function correctAnswerClicked() {
     let timetook = endTimer();
     $(".time-took").text(timetook + " seconds");
-    score += 1;
+    score += currentQuestionScore;
+    currentQuestionScore = maxScorePerQuestion;
     $(".score").text(score);
     $(".quiz-area").hide();
     $(".blurb-area").show();
