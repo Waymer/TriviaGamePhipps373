@@ -1,4 +1,13 @@
-<%= form_for(@game_record) do |f| %>
+<%= simple_form_for @game_record, html: { :class => 'form-horizontal' }, remote: true do |f| %>
+    <%= f.input :name, name: "Name", input_html: {class: "avg"}, :value => @game_record.name %>
+    <%= f.input :timestampe, label: "Timestamp", input_html: {class: "avg"}, :value => @game_record.timestamp %>
+    <p>&nbsp;</p>
+    <div class="form-actions">
+      <%= f.submit nil, class: 'button radius' %>
+    </div>
+<% end %>
+
+<!--<%= form_for(@game_record) do |f| %>
   <% if @game_record.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@game_record.errors.count, "error") %> prohibited this game_record from being saved:</h2>
@@ -23,3 +32,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+-->
