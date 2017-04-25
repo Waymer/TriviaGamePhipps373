@@ -15,7 +15,7 @@ class GameRecordsController < ApplicationController
 
   # GET /game_records/new
   def new
-    @game_record = GameRecord.new
+    @game_record = GameRecord.new :timestamp => Time.now.to_i
   end
 
   # GET /game_records/1/edit
@@ -30,6 +30,7 @@ class GameRecordsController < ApplicationController
     respond_to do |format|
       if @game_record.save
         format.html { redirect_to @game_record, notice: 'Game record was successfully created.' }
+        format.js   { }
         format.json { render :show, status: :created, location: @game_record }
       else
         format.html { render :new }
@@ -44,6 +45,7 @@ class GameRecordsController < ApplicationController
     respond_to do |format|
       if @game_record.update(game_record_params)
         format.html { redirect_to @game_record, notice: 'Game record was successfully updated.' }
+        format.js   { }
         format.json { render :show, status: :ok, location: @game_record }
       else
         format.html { render :edit }

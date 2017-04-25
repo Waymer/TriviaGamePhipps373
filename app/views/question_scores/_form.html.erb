@@ -1,3 +1,15 @@
+<%= simple_form_for @question_score, html: { :class => 'form-horizontal' }, remote: true do |f| %>
+    <%= f.input :score, label: "Score", input_html: {class: "avg"}, :value => @question_score.score %>
+    <%= f.input :time, label: "Time", input_html: {class: "avg"}, :value => @question_score.time %>
+    <%= f.input :landmark_id, label: "Landmark ID", input_html: {class: "avg"}, :value => @question_score.landmark_id %>
+    <%= f.input :question_id, label: "Question ID", input_html: {class: "avg"}, :value => @question_score.question_id %>
+    <p>&nbsp;</p>
+    <div class="form-actions">
+      <%= f.submit nil, class: 'button radius' %>
+    </div>
+<% end %>
+
+<!--  
 <%= form_for(@question_score) do |f| %>
   <% if @question_score.errors.any? %>
     <div id="error_explanation">
@@ -31,3 +43,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+-->

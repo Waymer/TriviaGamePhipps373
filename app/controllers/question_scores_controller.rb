@@ -29,6 +29,7 @@ class QuestionScoresController < ApplicationController
     respond_to do |format|
       if @question_score.save
         format.html { redirect_to @question_score, notice: 'Question score was successfully created.' }
+        format.js   { }
         format.json { render :show, status: :created, location: @question_score }
       else
         format.html { render :new }
@@ -43,6 +44,7 @@ class QuestionScoresController < ApplicationController
     respond_to do |format|
       if @question_score.update(question_score_params)
         format.html { redirect_to @question_score, notice: 'Question score was successfully updated.' }
+        format.js   { }
         format.json { render :show, status: :ok, location: @question_score }
       else
         format.html { render :edit }
