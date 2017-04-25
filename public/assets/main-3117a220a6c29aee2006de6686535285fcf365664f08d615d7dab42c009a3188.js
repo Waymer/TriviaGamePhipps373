@@ -8,7 +8,7 @@ $(function() {
   let visited = new Set();
   let currentLandmark;
   let totalLandmarks;
-  let maxScorePerQuestion = 4;
+  let maxScorePerQuestion = 5;
   let currentQuestionScore = maxScorePerQuestion;
 
   // Show welcome area
@@ -72,16 +72,6 @@ $(function() {
     // Help button
     $('.help-button').click(showTutorial);
 
-    // Make tutorial clickable
-    $('.tutorial-modal-content').click(function() {
-      $('.tutorial').modal('hide');
-    });
-
-    $('.highscore-button').click(function(e) {
-      e.preventDefault();
-      $('.highscore').modal();
-    });
-
   } // --end csvLoaded
 
   // Show Tutorial
@@ -129,7 +119,7 @@ $(function() {
 
     // Make information screen
     $('.blurb-area .info-text').html('<h4>' + question.info + '</h4>');
-    $('.blurb-area .info-pic').html('<p><img class="infopic" src="' + question.infopic + '"></p>');
+    $('.blurb-area .info-pic').html('<p><img src="' + question.infopic + '"></p>');
 
     // Make question screen
     $('.quiz-area .question').text(question.question);
