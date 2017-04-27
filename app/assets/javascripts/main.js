@@ -107,7 +107,7 @@ $(function() {
     location.reload()
 
     // JSON holding question data
-    var gr2_data = '{' + ' "name":' + initials + '}'
+    //var gr2_data = '{' + ' "name":' + initials + '}'
 
     // ajax to call controller method for adding scores to db
     $.ajax(
@@ -115,7 +115,7 @@ $(function() {
         type: "POST",
         url: "game_record/update",
         dataType: "json",
-        data: gr2_data,
+        data: $.param({ name: initials }),
         success: function(result) {
           console.log("Updated game record")
         },
@@ -135,7 +135,7 @@ $(function() {
     $('.tutorial').modal();
 
     // JSON holding timestamp for game record
-    var gr_data = '{' + ' "timestamp":' + Math.floor(Date.now() / 1000) + '}'
+    //var gr_data = '{' + ' "timestamp":' + Math.floor(Date.now() / 1000) + '}'
 
     // ajax to call controller method for adding game record to db
     $.ajax(
@@ -143,7 +143,7 @@ $(function() {
         type: "POST",
         url: "game_record/create",
         dataType: "json",
-        data: gr_data,
+        data: $.param({ timestamp: Math.floor(Date.now() / 1000) }),
         success: function(result) {
           console.log("Created game record")
         },
@@ -218,10 +218,10 @@ $(function() {
     $(".time-took").text(timetook + " seconds");
     score += currentQuestionScore;
     // JSON holding question data
-    var qs_data = '{' + ' "landmark_id":' + currentLandmark + 
-    ', "question_id":' + currentQuestion + 
-    ', "score":' + currentQuestionScore + 
-    ', "time":' + timetook + '}'
+    //var qs_data = '{' + ' "landmark_id":' + currentLandmark + 
+    //', "question_id":' + currentQuestion + 
+    //', "score":' + currentQuestionScore + 
+    //', "time":' + timetook + '}'
 
     // ajax to call controller method for adding scores to db
     $.ajax(
@@ -229,7 +229,7 @@ $(function() {
         type: "POST",
         url: "question_score/create",
         dataType: "json",
-        data: qs_data,
+        data: $.param({ landmark_id: currentLandmark, question_id: currentQuestion, score: currentQuestionScore, time: timetook }),
         success: function(result) {
           console.log("submitted question score")
         },
