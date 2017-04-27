@@ -103,6 +103,29 @@ $(function() {
     $('.gameover-area').show();
   }
 
+  function submitName(initials) {
+    location.reload()
+
+    // JSON holding question data
+    var gr2_data = '{' + ' "name":' + initials + '}'
+
+    // ajax to call controller method for adding scores to db
+    $.ajax(
+    {
+        type: "POST",
+        url: "game_record/update",
+        dataType: "json",
+        data: gr2_data,
+        success: function(result) {
+          console.log("Updated game record")
+        },
+        error: function(x, e) {
+          console.log("Updating game record went wrong")
+        }
+    });
+  }
+  }
+
   // When start game
   function begin(e) {
     e.preventDefault();
