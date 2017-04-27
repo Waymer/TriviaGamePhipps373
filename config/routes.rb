@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :record_scores
   resources :game_records
 
+  get 'game_record/update' => 'game_records#update'
+  get 'game_record/create' => 'game_records#create'
+  get 'question_score/create' => 'question_scores#create'
+
   root 'application#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

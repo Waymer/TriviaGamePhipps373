@@ -7,6 +7,7 @@ $(function() {
   let score = 0;
   let visited = new Set();
   let currentLandmark;
+  let currentQuestion;
   let totalLandmarks;
   let maxScorePerQuestion = 4;
   let currentQuestionScore = maxScorePerQuestion;
@@ -109,6 +110,24 @@ $(function() {
     $('.map-area').show();
     $('.score-area').show();
     $('.tutorial').modal();
+
+    // JSON holding timestamp for game record
+    var gr_data = '{' + ' "timestamp":' + Math.floor(Date.now() / 1000) + '}'
+
+    // ajax to call controller method for adding game record to db
+    $.ajax(
+    {
+        type: "POST",
+        url: "game_record/create",
+        dataType: "json",
+        data: gr_data,
+        success: function(result) {
+          console.log("Created game record")
+        },
+        error: function(x, e) {
+          console.log("Creating game record went wrong")
+        }
+    });
   }
 
   // When landmark clicked
@@ -126,7 +145,7 @@ $(function() {
       }
     }
     let question = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
-
+    currentQuestion = question.id
     // Make information screen
     $('.blurb-area .info-text').html('<h4>' + question.info + '</h4>');
     $('.blurb-area .info-pic').html('<p><img class="infopic" src="' + question.infopic + '"></p>');
@@ -175,6 +194,27 @@ $(function() {
     let timetook = endTimer();
     $(".time-took").text(timetook + " seconds");
     score += currentQuestionScore;
+    // JSON holding question data
+    var qs_data = '{' + ' "landmark_id":' + currentLandmark + 
+    ', "question_id":' + currentQuestion + 
+    ', "score":' + currentQuestionScore + 
+    ', "time":' + timetook + '}'
+
+    // ajax to call controller method for adding scores to db
+    $.ajax(
+    {
+        type: "POST",
+        url: "question_score/create",
+        dataType: "json",
+        data: qs_data,
+        success: function(result) {
+          console.log("submitted question score")
+        },
+        error: function(x, e) {
+          console.log("submitting question score went wrong")
+        }
+    });
+
     currentQuestionScore = maxScorePerQuestion;
     $(".score").text(score);
     $(".quiz-area").hide();
