@@ -25,6 +25,7 @@ class GameRecordsController < ApplicationController
   # POST /game_records
   # POST /game_records.json
   def create
+    puts game_record_params
     @game_record = GameRecord.new(game_record_params)
 
     respond_to do |format|

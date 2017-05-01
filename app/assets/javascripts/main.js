@@ -11,6 +11,7 @@ $(function() {
   let totalLandmarks;
   let maxScorePerQuestion = 4;
   let currentQuestionScore = maxScorePerQuestion;
+  let gr_id;
 
   // Show welcome area
   $('.map-area').hide();
@@ -103,7 +104,11 @@ $(function() {
     $('.gameover-area').show();
   }
 
-  function submitName(initials) {
+  $('.submit-name').click(submitName);
+
+  function submitName(e) {
+    e.preventDefault();
+    initials = document.getElementById('initials').value;
     // JSON holding question data
     //var gr2_data = '{' + ' "name":' + initials + '}'
 
@@ -111,18 +116,19 @@ $(function() {
     $.ajax(
     {
         type: "POST",
-        url: "game_record/update",
+        url: "game_record/update/" + gr_id,
         dataType: "json",
-        data: $.param({ name: initials }),
+        //data: $.param({ name: initials }),
+        data: {"game_record": { name: initials }},
         success: function(result) {
-          console.log("Updated game record")
+          console.log("Updated game record");
         },
         error: function(x, e) {
-          console.log("Updating game record went wrong")
+          console.log("Updating game record went wrong");
         }
     });
 
-    location.reload();
+    //location.reload();
   }
 
   // When start game
@@ -142,11 +148,14 @@ $(function() {
         type: "POST",
         url: "game_record/create",
         dataType: "json",
-        data: $.param({ timestamp: Math.floor(Date.now() / 1000) }),
+        // data: $.param({ timestamp: Math.floor(Date.now() / 1000) }),
+        data: { "game_record": {name: "", timestamp: Math.floor(Date.now() / 1000) }},
         success: function(result) {
+          gr_id = result.id;
           console.log("Created game record")
         },
         error: function(x, e) {
+          // $('html').html(x.responseText);
           console.log("Creating game record went wrong")
         }
     });
@@ -228,7 +237,8 @@ $(function() {
         type: "POST",
         url: "question_score/create",
         dataType: "json",
-        data: $.param({ landmark_id: currentLandmark, question_id: currentQuestion, score: currentQuestionScore, time: timetook }),
+        // data: $.param({ landmark_id: currentLandmark, question_id: currentQuestion, score: currentQuestionScore, time: timetook }),
+        data: {"question_score": { landmark_id: currentLandmark, question_id: currentQuestion, score: currentQuestionScore, time: timetook }},
         success: function(result) {
           console.log("submitted question score")
         },
