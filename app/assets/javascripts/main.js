@@ -124,7 +124,6 @@ $(function() {
         }
     });
   }
-  }
 
   // When start game
   function begin(e) {
