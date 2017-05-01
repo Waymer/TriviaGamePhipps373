@@ -104,8 +104,6 @@ $(function() {
   }
 
   function submitName(initials) {
-    location.reload()
-
     // JSON holding question data
     //var gr2_data = '{' + ' "name":' + initials + '}'
 
@@ -123,7 +121,8 @@ $(function() {
           console.log("Updating game record went wrong")
         }
     });
-  }
+
+    location.reload();
   }
 
   // When start game
