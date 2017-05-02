@@ -115,6 +115,8 @@ $(function() {
     $('.map-area').hide();
     $('.score-area').hide();
     $('.gameover-area').show();
+    //$('.highscore').modal();
+    //  getHighScores();
   }
 
   $('.submit-name').click(submitName);
@@ -140,8 +142,20 @@ $(function() {
           console.log("Updating game record went wrong");
         }
     });
+    $('.highscore').modal();
+    getHighScores();
 
-    location.reload();
+    var button = document.createElement("button");
+    button.innerHTML = "Done";
+    button.setAttribute("data-dismiss", "modal")
+    var body = document.getElementById("highscore");
+    console.log(body);
+    body.appendChild(button);
+    console.log("should have button!!!");
+    button.addEventListener ("click", function() {
+      location.reload();
+    });
+    //location.reload();
   }
 
   // When start game
@@ -177,6 +191,7 @@ $(function() {
   // When landmark clicked
   function landmarkClicked(e) {
     e.preventDefault();
+    console.log($(this));
     let id = $(this).data('landmarkid');
     currentLandmark = id;
     console.log('Landmark ' + id + ' clicked');
