@@ -93,8 +93,7 @@ $(function() {
     $('.tutorial').modal();
   }
 
-  function getHighScores(e) {
-    e.preventDefault();
+  function getHighScores() {
     $.ajax({
         type: "GET",
         url: "game_record/top/",
