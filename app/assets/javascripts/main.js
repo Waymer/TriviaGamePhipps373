@@ -253,7 +253,12 @@ $(function() {
         url: "question_score/create",
         dataType: "json",
         // data: $.param({ landmark_id: currentLandmark, question_id: currentQuestion, score: currentQuestionScore, time: timetook }),
-        data: {"question_score": { landmark_id: currentLandmark, question_id: currentQuestion, score: currentQuestionScore, time: timetook }},
+        data: {"question_score": { landmark_id: currentLandmark, 
+                                    question_id: currentQuestion, 
+                                    score: currentQuestionScore, 
+                                    time: timetook,
+                                    game_record_id: gr_id }
+                                  },
         success: function(result) {
           console.log("submitted question score")
         },
