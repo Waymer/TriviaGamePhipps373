@@ -141,7 +141,7 @@ $(function() {
         }
     });
 
-    //location.reload();
+    location.reload();
   }
 
   // When start game
