@@ -70,7 +70,7 @@ class GameRecordsController < ApplicationController
     @game_scores = Array.new()
     game_score = Array.new()
     for record in @game_records
-      game_score = [record.id, record.get_total_score]
+      game_score = [record.name, record.get_total_score]
       @game_scores << game_score
     end
     @game_scores.sort_by{|s| s[1]}
