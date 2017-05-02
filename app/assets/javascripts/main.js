@@ -31,7 +31,7 @@ $(function() {
     landmarks = $.csv.toObjects(l[0]);
     questions = $.csv.toObjects(q[0]);
     console.log("CSV converted to JS objects");
-
+    console.log(questions[0])
     // Total landmarks count
     totalLandmarks = landmarks.length;
 
@@ -176,6 +176,7 @@ $(function() {
       }
     }
     let question = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
+    console.log(question)
     currentQuestion = question.id
     // Make information screen
     $('.blurb-area .info-text').html('<h4>' + question.info + '</h4>');
@@ -232,6 +233,7 @@ $(function() {
     //', "time":' + timetook + '}'
 
     // ajax to call controller method for adding scores to db
+    console.log(currentQuestion)
     $.ajax(
     {
         type: "POST",
