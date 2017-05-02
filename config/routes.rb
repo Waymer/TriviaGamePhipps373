@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'game_record/update/:id' => 'game_records#update'
   post 'game_record/create' => 'game_records#create'
   post 'question_score/create' => 'question_scores#create'
+  get 'game_record/top' => 'game_records#top'
 
   root 'application#index'
   # The priority is based upon order of creation: first created -> highest priority.

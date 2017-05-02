@@ -82,6 +82,7 @@ $(function() {
     $('.highscore-button').click(function(e) {
       e.preventDefault();
       $('.highscore').modal();
+      getHighScores();
     });
 
   } // --end csvLoaded
@@ -92,6 +93,19 @@ $(function() {
     $('.tutorial').modal();
   }
 
+  function getHighScores(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "game_record/top/",
+        success: function(result) {
+          console.log("Got high scores");
+        },
+        error: function(x, e) {
+          console.log("Getting high scores went wrong");
+        }
+    });
+  }
   // When game over
   function endGameButton(e) {
     e.preventDefault();
