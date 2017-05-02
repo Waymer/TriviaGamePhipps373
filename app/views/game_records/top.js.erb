@@ -1,4 +1,4 @@
 console.log("getting high scores (top.js.erb)");
-//var scores = <% @game_scores>
 <% @game_scores.each do |score| %>
-  $("#highscore").append("<%= score[0]> : <%= score[1]%>")
+  $("#highscore").append("<%= score[0] %> : <%= score[1] %>");
+<% end %>
