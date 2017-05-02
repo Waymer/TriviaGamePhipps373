@@ -73,7 +73,10 @@ class GameRecordsController < ApplicationController
       game_score = [record.name, record.get_total_score]
       @game_scores << game_score
     end
-    @game_scores.sort_by{|s| s[1]}
+    #print(@game_scores)
+    @game_scores = @game_scores.sort_by{|s| s[1]}
+    @game_scores = @game_scores.reverse
+    #print(@game_scores)
     @game_scores = @game_scores[0, 10]
     respond_to do |format|
       format.js
