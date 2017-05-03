@@ -11,6 +11,7 @@ $(function() {
   let totalLandmarks;
   let maxScorePerQuestion = 4;
   let currentQuestionScore = maxScorePerQuestion;
+  let gr_id;
 
   // Show welcome area
   $('.map-area').hide();
@@ -30,7 +31,7 @@ $(function() {
     landmarks = $.csv.toObjects(l[0]);
     questions = $.csv.toObjects(q[0]);
     console.log("CSV converted to JS objects");
-
+    console.log(questions[0])
     // Total landmarks count
     totalLandmarks = landmarks.length;
 
@@ -81,6 +82,7 @@ $(function() {
     $('.highscore-button').click(function(e) {
       e.preventDefault();
       $('.highscore').modal();
+      getHighScores();
     });
 
   } // --end csvLoaded
@@ -91,6 +93,18 @@ $(function() {
     $('.tutorial').modal();
   }
 
+  function getHighScores() {
+    $.ajax({
+        type: "GET",
+        url: "game_record/top/",
+        success: function(result) {
+          console.log("Got high scores");
+        },
+        error: function(x, e) {
+          console.log("Getting high scores went wrong");
+        }
+    });
+  }
   // When game over
   function endGameButton(e) {
     e.preventDefault();
@@ -101,9 +115,15 @@ $(function() {
     $('.map-area').hide();
     $('.score-area').hide();
     $('.gameover-area').show();
+    //$('.highscore').modal();
+    //  getHighScores();
   }
 
-  function submitName(initials) {
+  $('.submit-name').click(submitName);
+
+  function submitName(e) {
+    e.preventDefault();
+    initials = document.getElementById('initials').value;
     // JSON holding question data
     //var gr2_data = '{' + ' "name":' + initials + '}'
 
@@ -111,18 +131,31 @@ $(function() {
     $.ajax(
     {
         type: "POST",
-        url: "game_record/update",
+        url: "game_record/update/" + gr_id,
         dataType: "json",
-        data: $.param({ name: initials }),
+        //data: $.param({ name: initials }),
+        data: {"game_record": { name: initials }},
         success: function(result) {
-          console.log("Updated game record")
+          console.log("Updated game record");
         },
         error: function(x, e) {
-          console.log("Updating game record went wrong")
+          console.log("Updating game record went wrong");
         }
     });
+    $('.highscore').modal({
+      // user now can't exit the modal or else duplicate submission
+      keyboard: false,
+      backdrop: "static"
+    });
+    // x button change to reload or else duplicate submission
+    $('.highscore .close').click(function() { location.reload() });
+    getHighScores();
 
-    location.reload();
+    let button = $('<button class="btn btn-success btn-lg" style="margin-bottom: 1em;">Done</button>').appendTo('#highscore1');
+    button.click(function() {
+      location.reload();
+    });
+
   }
 
   // When start game
@@ -142,11 +175,14 @@ $(function() {
         type: "POST",
         url: "game_record/create",
         dataType: "json",
-        data: $.param({ timestamp: Math.floor(Date.now() / 1000) }),
+        // data: $.param({ timestamp: Math.floor(Date.now() / 1000) }),
+        data: { "game_record": {name: "", timestamp: Math.floor(Date.now() / 1000) }},
         success: function(result) {
+          gr_id = result.id;
           console.log("Created game record")
         },
         error: function(x, e) {
+          // $('html').html(x.responseText);
           console.log("Creating game record went wrong")
         }
     });
@@ -155,6 +191,7 @@ $(function() {
   // When landmark clicked
   function landmarkClicked(e) {
     e.preventDefault();
+    console.log($(this));
     let id = $(this).data('landmarkid');
     currentLandmark = id;
     console.log('Landmark ' + id + ' clicked');
@@ -167,6 +204,7 @@ $(function() {
       }
     }
     let question = availableQuestions[Math.floor(Math.random() * availableQuestions.length)];
+    console.log(question)
     currentQuestion = question.id
     // Make information screen
     $('.blurb-area .info-text').html('<h4>' + question.info + '</h4>');
@@ -226,12 +264,19 @@ $(function() {
     //', "time":' + timetook + '}'
 
     // ajax to call controller method for adding scores to db
+    console.log(currentQuestion)
     $.ajax(
     {
         type: "POST",
         url: "question_score/create",
         dataType: "json",
-        data: $.param({ landmark_id: currentLandmark, question_id: currentQuestion, score: currentQuestionScore, time: timetook }),
+        // data: $.param({ landmark_id: currentLandmark, question_id: currentQuestion, score: currentQuestionScore, time: timetook }),
+        data: {"question_score": { landmark_id: currentLandmark, 
+                                    question_id: currentQuestion, 
+                                    score: currentQuestionScore, 
+                                    time: timetook,
+                                    game_record_id: gr_id }
+                                  },
         success: function(result) {
           console.log("submitted question score")
         },

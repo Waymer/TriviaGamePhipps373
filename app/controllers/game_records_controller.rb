@@ -25,6 +25,7 @@ class GameRecordsController < ApplicationController
   # POST /game_records
   # POST /game_records.json
   def create
+    puts game_record_params
     @game_record = GameRecord.new(game_record_params)
 
     respond_to do |format|
@@ -62,6 +63,24 @@ class GameRecordsController < ApplicationController
     #   format.html { redirect_to game_records_url, notice: 'Game record was successfully destroyed.' }
     #   format.json { head :no_content }
     # end
+  end
+
+  def top
+    @game_records = GameRecord.all
+    @game_scores = Array.new()
+    game_score = Array.new()
+    for record in @game_records
+      game_score = [record.name, record.get_total_score]
+      @game_scores << game_score
+    end
+    #print(@game_scores)
+    @game_scores = @game_scores.sort_by{|s| s[1]}
+    @game_scores = @game_scores.reverse
+    #print(@game_scores)
+    @game_scores = @game_scores[0, 10]
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

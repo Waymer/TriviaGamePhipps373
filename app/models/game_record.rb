@@ -7,7 +7,7 @@ class GameRecord < ActiveRecord::Base
 	#validates_presence_of :name
 	#Methods
 	def get_total_score
-		question_scores = Question_score.for_game_record(self.id)
+		question_scores = QuestionScore.for_game_record(self.id)
 		score = 0
 		question_scores.length.times do |i|
 			score += question_scores[i].score
@@ -15,7 +15,7 @@ class GameRecord < ActiveRecord::Base
 		score
 	end
 	def get_total_time
-		question_scores = Question_score.for_game_record(self.id)
+		question_scores = QuestionScore.for_game_record(self.id)
 		time = 0
 		question_scores.length.times do |i|
 			time += question_scores[i].time

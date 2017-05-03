@@ -35,14 +35,14 @@
 
       <div class="modal fade highscore" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content highscore-modal-content">
+          <div class="modal-content highscore-modal-content" id = "highscore1">
 
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title">Highscore</h4>
             </div>
-            <div class="modal-body highscore-modal-body">
-              ...
+            <div class="modal-body highscore-modal-body" id = "highscore">
+              
             </div>
 
           </div><!-- end .modal-content -->
@@ -65,7 +65,7 @@
           </div>
           <!-- <button type="submit" class="btn btn-default">Submit</button> -->
           <br><br>
-          <button type="submit" class="btn btn-success btn-lg" onclick="submitName(document.getElementById('initials').value)">End Game</button>
+          <button type="submit" class="btn btn-success btn-lg submit-name">Save</button>
         </form>
       </div>
 

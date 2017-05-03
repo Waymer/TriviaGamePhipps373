@@ -1,0 +1,8 @@
+console.log("getting high scores (top.js.erb)");
+
+let table = '<table class="table table-striped"><tr><td>Name</td><td>Score</td></tr>'
+<% @game_scores.each do |score| %>
+  table += "<tr><td><%= score[0] %></td><td><%= score[1] %></td></tr>";
+<% end %>
+table += '</table>'
+$("#highscore").html(table);

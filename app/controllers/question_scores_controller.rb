@@ -71,6 +71,6 @@ class QuestionScoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_score_params
-      params.require(:question_score).permit(:score, :time, :landmark_id, :question_id)
+      params.require(:question_score).permit(:score, :time, :landmark_id, :question_id, :game_record_id)
     end
 end
