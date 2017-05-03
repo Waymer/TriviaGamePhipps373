@@ -195,6 +195,8 @@ $(function() {
     startTimer();
   }
 
+  $('.tryagain').hide();
+
   // When answer clicked
   function answerClicked(e) {
     e.preventDefault();
@@ -202,6 +204,7 @@ $(function() {
       $(this).addClass('btn-success');
       correctAnswerClicked();
     } else {
+      $('.tryagain').fadeIn(500).delay(1500).fadeOut(500);
       // $(this).addClass('btn-danger');
       $(this).addClass('active');
       $(this).html($(this).text() + ' <span class="glyphicon glyphicon-remove text-danger"></span>');
