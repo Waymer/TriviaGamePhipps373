@@ -142,20 +142,20 @@ $(function() {
           console.log("Updating game record went wrong");
         }
     });
-    $('.highscore').modal();
+    $('.highscore').modal({
+      // user now can't exit the modal or else duplicate submission
+      keyboard: false,
+      backdrop: "static"
+    });
+    // x button change to reload or else duplicate submission
+    $('.highscore .close').click(function() { location.reload() });
     getHighScores();
 
-    var button = document.createElement("button");
-    button.innerHTML = "Done";
-    button.setAttribute("data-dismiss", "modal")
-    var body = document.getElementById("highscore");
-    console.log(body);
-    body.appendChild(button);
-    console.log("should have button!!!");
-    button.addEventListener ("click", function() {
+    let button = $('<button class="btn btn-success btn-lg" style="margin-bottom: 1em;">Done</button>').appendTo('#highscore1');
+    button.click(function() {
       location.reload();
     });
-    //location.reload();
+
   }
 
   // When start game
