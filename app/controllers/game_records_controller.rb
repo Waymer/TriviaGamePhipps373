@@ -55,16 +55,10 @@ class GameRecordsController < ApplicationController
     end
   end
 
-  # DELETE /game_records/1
-  # DELETE /game_records/1.json
   def destroy
-    # @game_record.destroy
-    # respond_to do |format|
-    #   format.html { redirect_to game_records_url, notice: 'Game record was successfully destroyed.' }
-    #   format.json { head :no_content }
-    # end
   end
 
+  #Controller action to get high scores
   def top
     @game_records = GameRecord.all
     @game_scores = Array.new()
@@ -73,10 +67,8 @@ class GameRecordsController < ApplicationController
       game_score = [record.name, record.get_total_score]
       @game_scores << game_score
     end
-    #print(@game_scores)
     @game_scores = @game_scores.sort_by{|s| s[1]}
     @game_scores = @game_scores.reverse
-    #print(@game_scores)
     @game_scores = @game_scores[0, 10]
     respond_to do |format|
       format.js
