@@ -56,11 +56,6 @@ class QuestionScoresController < ApplicationController
   # DELETE /question_scores/1
   # DELETE /question_scores/1.json
   def destroy
-    # @question_score.destroy
-    # respond_to do |format|
-    #   format.html { redirect_to question_scores_url, notice: 'Question score was successfully destroyed.' }
-    #   format.json { head :no_content }
-    # end
   end
 
   private
